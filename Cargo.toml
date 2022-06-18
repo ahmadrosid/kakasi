@@ -5,6 +5,14 @@ edition = "2021"
 
 [workspace]
 members = [
-    "crates/cli",
     "crates/core",
 ]
+
+[dependencies]
+anyhow = "1.0.57"
+clap = "3.2.5"
+
+[[bin]]
+name = "kakasi"
+path = "src/main.rs"
+
