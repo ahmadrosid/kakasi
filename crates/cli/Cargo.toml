@@ -1,0 +1,13 @@
+[package]
+name = "cli"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+anyhow = "1.0.57"
+clap = "3.2.5"
+
+[[bin]]
+name = "kakasi"
+path = "src/main.rs"
+
