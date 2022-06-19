@@ -1,23 +1,38 @@
-mod commands;
 mod cli;
+mod commands;
+mod util;
 
-use crate::cli::*;
+use crate::cli::{CliResult, Config, Shell, parse, print_help};
 
 fn main() -> CliResult {
-    let mut config = Config{};
-    let args = match cli::parse().try_get_matches() {
+    let mut config = match Config::default() {
+        Ok(cfg) => cfg,
+        Err(e) => {
+            let mut shell = Shell::new();
+            cli::exit_with_error(e.into(), &mut shell)
+        }
+    };
+
+    let args = match parse().try_get_matches() {
         Ok(args) => args,
         Err(e) => {
-            return Err(e.into());
+            let mut shell = Shell::new();
+            cli::exit_with_error(e.into(), &mut shell)
         }
     };
 
     if let Some((cmd, args)) = args.subcommand() {
-        if let Some(cm) = commands::builtin_exec(cmd) {
-            let _ = cm(&mut config, args);
+        if let Some(exec) = commands::builtin_exec(cmd) {
+            match exec(&mut config, args) {
+                Ok(()) => {},
+                Err(e) => {
+                    let mut shell = Shell::new();
+                    cli::exit_with_error(e.into(), &mut shell)
+                }
+            }
         }
     } else {
-        cli::print_help();
+        print_help();
     }
 
     Ok(())

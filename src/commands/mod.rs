@@ -2,9 +2,7 @@ use super::cli::*;
 pub mod new;
 
 pub fn builtin() -> Vec<App> {
-    vec![
-        new::cli()
-    ]
+    vec![new::cli()]
 }
 
 pub fn builtin_exec(cmd: &str) -> Option<fn(&mut Config, &ArgMatches) -> CliResult> {

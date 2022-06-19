@@ -1,5 +1,5 @@
-use crate::commands;
 use crate::cli::*;
+use crate::commands;
 
 pub fn parse() -> App {
     let usage = "kakasi [OPTIONS] [SUBCOMMAND]";
@@ -15,9 +15,11 @@ pub fn parse() -> App {
 }
 
 pub fn print_help() {
-    println!("{}", get_help_text()
-        .replace("{usage}", "kakasi [OPTIONS] [SUBCOMMAND]")
-        .replace("{options}", "\t--help")
+    println!(
+        "{}",
+        get_help_text()
+            .replace("{usage}", "kakasi [OPTIONS] [SUBCOMMAND]")
+            .replace("{options}", "\t--help")
     );
 }
 
