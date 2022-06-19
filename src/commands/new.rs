@@ -1,4 +1,4 @@
-use crate::command_prelude::*;
+use crate::cli::*;
 
 pub fn cli() -> App {
     subcommand("new")
@@ -10,20 +10,7 @@ pub fn cli() -> App {
         .after_help("Run `kakasi help new` for more detailed information.\n")
 }
 
-pub fn exec(config: &mut Config, args: &ArgMatches) -> CliResult {
+pub fn exec(_: &mut Config, _: &ArgMatches) -> CliResult {
     println!("Hei thanks to create new project");
-    // let opts = args.new_options(config)?;
-    //
-    // ops::new(&opts, config)?;
-    // let path = args.get_one::<String>("path").unwrap();
-    // let package_name = if let Some(name) = args.get_one::<String>("name") {
-    //     name
-    // } else {
-    //     path
-    // };
-    // config.shell().status(
-    //     "Created",
-    //     format!("{} `{}` package", opts.kind, package_name),
-    // )?;
     Ok(())
 }

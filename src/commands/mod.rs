@@ -1,4 +1,4 @@
-use super::command_prelude::*;
+use super::cli::*;
 pub mod new;
 
 pub fn builtin() -> Vec<App> {

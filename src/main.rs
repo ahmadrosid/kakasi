@@ -1,8 +1,7 @@
-mod cli;
 mod commands;
-mod command_prelude;
+mod cli;
 
-use command_prelude::*;
+use crate::cli::*;
 
 fn main() -> CliResult {
     let mut config = Config{};

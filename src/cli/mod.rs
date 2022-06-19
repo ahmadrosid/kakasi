@@ -1,5 +1,10 @@
+mod parser;
+
 pub use clap::{value_parser, AppSettings, Arg, ArgAction, ArgMatches};
 pub type App = clap::Command<'static>;
+
+pub use parser::parse;
+pub use parser::print_help;
 
 #[derive(Debug)]
 pub struct Config {
@@ -18,7 +23,7 @@ pub trait AppExt: Sized {
         self
     }
     fn arg_quiet(self) -> Self {
-        self._arg(flag("quiet", "Do not print cargo log messages").short('q'))
+        self._arg(flag("quiet", "Do not print log messages").short('q'))
     }
 }
 
@@ -74,3 +79,4 @@ impl From<std::io::Error> for CliError {
         CliError::new(err.into(), 1)
     }
 }
+

@@ -1,5 +1,5 @@
-use super::commands;
-use super::command_prelude::*;
+use crate::commands;
+use crate::cli::*;
 
 pub fn parse() -> App {
     let usage = "kakasi [OPTIONS] [SUBCOMMAND]";
