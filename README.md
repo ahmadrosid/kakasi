@@ -20,7 +20,7 @@ kakasi controller user_controller
 
 Add model
 ```bash
-kakasi controller user
+kakasi model user
 ```
 
 Run web server
